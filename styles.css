@@ -1,0 +1,549 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 30%, #E6F3FF 70%, #FFFFFF 100%);
+}
+
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5px;
+}
+
+.tagline {
+    color: #87CEEB;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.hero {
+    margin-top: 120px;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+}
+
+.departments {
+    padding: 80px 0;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.departments h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.dept-card {
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.1), rgba(255, 215, 0, 0.1));
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(135, 206, 235, 0.2);
+}
+
+.dept-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #FFD700;
+}
+
+.dept-card h3 {
+    color: #87CEEB;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.form-section {
+    padding: 80px 0 120px 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    position: relative;
+    min-height: 100vh;
+}
+
+.form-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.application-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-group {
+    margin-bottom: 40px;
+}
+
+.form-group h3 {
+    color: #4682B4;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 10px;
+}
+
+.field-group, .team-name-group {
+    margin-bottom: 25px;
+}
+
+.field-group label, .team-name-group label, .member-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.field-group input, .field-group select, .field-group textarea,
+.team-name-group input, .member-field input, .member-field select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(135, 206, 235, 0.3);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.field-group input:focus, .field-group select:focus, .field-group textarea:focus,
+.team-name-group input:focus, .member-field input:focus, .member-field select:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 1);
+}
+
+.member-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(135, 206, 235, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(135, 206, 235, 0.2);
+    position: relative;
+}
+
+.member-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-member-btn {
+    background: linear-gradient(45deg, #87CEEB, #4682B4);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.add-member-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+}
+
+.remove-member-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.remove-member-btn:hover {
+    background: #ff5252;
+    transform: scale(1.1);
+}
+
+.submit-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: white;
+    border: none;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+}
+
+.footer {
+    background: rgba(51, 51, 51, 0.9);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+@media (max-width: 1024px) {
+    .member-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .dept-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .application-form {
+        padding: 25px;
+        margin: 0 10px;
+    }
+    
+    .member-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding-top: 25px;
+    }
+    
+    .form-group h3 {
+        font-size: 1.3rem;
+    }
+    
+    .departments h2, .form-section h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 0;
+        margin-top: 100px;
+    }
+    
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .cta-button, .submit-btn {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+    
+    .application-form {
+        padding: 20px;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.sdg-selection-container {
+    border: 2px solid #4682B4;
+    border-radius: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(70, 130, 180, 0.15);
+}
+
+.sdg-selection-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(70, 130, 180, 0.2);
+}
+
+.sdg-selection-info p {
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.sdg-count {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.sdg-checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid rgba(70, 130, 180, 0.1);
+}
+
+.sdg-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(70, 130, 180, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sdg-item:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(70, 130, 180, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sdg-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    accent-color: #667eea;
+    transform: scale(1.2);
+}
+
+.sdg-item label {
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    line-height: 1.4;
+    font-size: 1rem;
+}
+
+.sdg-item input[type="checkbox"]:checked + label {
+    color: #667eea;
+    font-weight: 700;
+}
+
+.sdg-item input[type="checkbox"]:checked {
+    filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.4));
+}
+
+.sdg-selection-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(70, 130, 180, 0.2);
+}
+
+.sdg-action-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    font-size: 0.95rem;
+}
+
+.sdg-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+}
+
+.sdg-action-btn:active {
+    transform: translateY(0);
+}
+
+.sdg-checkbox-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sdg-checkbox-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+
+.sdg-checkbox-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 5px;
+}
+
+.sdg-checkbox-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+}
+
+@media (max-width: 768px) {
+    .sdg-checkbox-container {
+        grid-template-columns: 1fr;
+        max-height: 350px;
+    }
+    
+    .sdg-selection-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .sdg-selection-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sdg-action-btn {
+        width: 150px;
+    }
+}
