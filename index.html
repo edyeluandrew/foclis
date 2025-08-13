@@ -710,7 +710,7 @@
             };
 
             try {
-                const res = await fetch('http://localhost:5000/apply', {
+                const res = await fetch('https://foclis-backend.onrender.com/apply', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
