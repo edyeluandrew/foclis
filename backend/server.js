@@ -29,7 +29,6 @@ transporter.verify(function(error, success) {
   }
 });
 
-
 function formatSDGNames(sdgArray) {
   const sdgMap = {
     'sdg1': 'SDG 1: No Poverty',
@@ -51,9 +50,7 @@ function formatSDGNames(sdgArray) {
     'sdg17': 'SDG 17: Partnerships for the Goals'
   };
   
-  if (!Array.isArray(sdgArray)) {
-    return 'No SDGs selected';
-  }
+  if (!Array.isArray(sdgArray)) return 'No SDGs selected';
   
   return sdgArray.map(sdg => sdgMap[sdg] || sdg).join(', ');
 }
@@ -62,8 +59,7 @@ function formatSDGsForHTML(sdgArray) {
   if (!Array.isArray(sdgArray) || sdgArray.length === 0) {
     return '<span style="color: #ff6b6b;">No SDGs selected</span>';
   }
-  
-  const formattedSDGs = formatSDGNames(sdgArray);
+
   const sdgList = sdgArray.map(sdg => {
     const sdgMap = {
       'sdg1': 'SDG 1: No Poverty',
@@ -84,14 +80,15 @@ function formatSDGsForHTML(sdgArray) {
       'sdg16': 'SDG 16: Peace, Justice and Strong Institutions',
       'sdg17': 'SDG 17: Partnerships for the Goals'
     };
-    
     return `<span style="display: inline-block; background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 4px 10px; margin: 2px; border-radius: 15px; font-size: 12px; font-weight: 600;">${sdgMap[sdg] || sdg}</span>`;
   }).join(' ');
-  
+
   return sdgList;
 }
 
-function buildAdminHtml({ teamName, projectIdea, problemStatement, proposedSolution, technologyUsed, sdgAlignment, projectCategory, memberEmails }) {
+function buildAdminHtml(data) {
+  const { teamName, projectIdea, problemStatement, proposedSolution, technologyUsed, sdgAlignment, projectCategory, memberEmails } = data;
+
   const membersHtml = (memberEmails || []).map((m, i) => `
     <tr>
       <td style="padding:8px;border:1px solid #eee;">${i + 1}</td>
@@ -104,11 +101,13 @@ function buildAdminHtml({ teamName, projectIdea, problemStatement, proposedSolut
   return `
   <div style="font-family:Arial,sans-serif; color:#333; line-height:1.4;">
     <div style="max-width:700px;margin:0 auto;padding:20px;border-radius:8px;background:#f8fafc;">
+      <!-- Header -->
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
         <h1 style="margin: 0; font-size: 24px;">🆕 New FOCLIS Hackathon Application</h1>
         <p style="margin: 10px 0 0 0; opacity: 0.9;">Team "${escapeHtml(teamName || 'Unnamed Team')}" has applied!</p>
       </div>
 
+      <!-- Team Details -->
       <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
         <h3 style="color: #667eea; margin-bottom: 15px; border-bottom: 2px solid #eef6ff; padding-bottom: 8px;">📋 Team Details</h3>
         <table style="width:100%;border-collapse:collapse;margin-bottom:16px;">
@@ -131,6 +130,7 @@ function buildAdminHtml({ teamName, projectIdea, problemStatement, proposedSolut
         </table>
       </div>
 
+      <!-- Project Details -->
       <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
         <h3 style="color: #667eea; margin-bottom: 15px; border-bottom: 2px solid #eef6ff; padding-bottom: 8px;">💡 Project Details</h3>
         <div style="margin-bottom: 15px;">
@@ -153,6 +153,7 @@ function buildAdminHtml({ teamName, projectIdea, problemStatement, proposedSolut
         </div>
       </div>
 
+      <!-- Team Members -->
       <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
         <h3 style="color: #667eea; margin-bottom: 15px; border-bottom: 2px solid #eef6ff; padding-bottom: 8px;">👥 Team Members (${memberEmails.length})</h3>
         <table style="width:100%;border-collapse:collapse;">
@@ -168,9 +169,13 @@ function buildAdminHtml({ teamName, projectIdea, problemStatement, proposedSolut
         </table>
       </div>
 
+      <!-- Footer -->
       <div style="text-align: center; margin-top: 20px; padding: 15px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 8px;">
         <p style="color: white; margin: 0; font-size: 12px;">
           📅 Received: ${new Date().toLocaleString()} | 🏢 FOCLIS Hackathon Application Server
+        </p>
+        <p style="color: white; margin: 5px 0 0 0; font-size: 12px;">
+          For inquiries, contact the admin at ${ADMIN_EMAIL}
         </p>
       </div>
     </div>
@@ -178,20 +183,21 @@ function buildAdminHtml({ teamName, projectIdea, problemStatement, proposedSolut
   `;
 }
 
-function buildTeamMemberHtml({ teamName, projectIdea, problemStatement, proposedSolution, technologyUsed, sdgAlignment, projectCategory, memberEmails }) {
+// Same thing for team member HTML
+function buildTeamMemberHtml(data) {
+  const { teamName, projectIdea, problemStatement, proposedSolution, technologyUsed, sdgAlignment, projectCategory, memberEmails } = data;
   const formattedSDGs = formatSDGsForHTML(sdgAlignment);
   const sdgCount = Array.isArray(sdgAlignment) ? sdgAlignment.length : 0;
-  
+
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f9f9f9; padding: 20px; border-radius: 10px;">
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
         <h1 style="margin: 0; font-size: 28px;">🎉 FOCLIS Hackathon 2025</h1>
         <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Application Confirmation</p>
       </div>
-      
+
       <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
         <h2 style="color: #333; margin-bottom: 20px;">✅ Your application has been received!</h2>
-        
         <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
           <h3 style="color: #667eea; margin-bottom: 10px;">Team Details:</h3>
           <p><strong>Team Name:</strong> ${escapeHtml(teamName || '—')}</p>
@@ -224,24 +230,27 @@ function buildTeamMemberHtml({ teamName, projectIdea, problemStatement, proposed
             </div>
           </div>
         </div>
-        
+
         <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50;">
           <p style="color: #333; margin: 0; font-size: 16px; text-align: center;">
             Thank you for applying to be part of the FOCLIS Hackathon. We have received your application. Please go ahead and start building your MVP.
           </p>
         </div>
       </div>
-      
+
       <div style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
         <p>Faculty of Computing, Library & Information Science</p>
         <p>© 2025 FOCLIS Hackathon. All rights reserved.</p>
-        <p style="font-size: 12px; margin-top: 10px;">📅 Application received: ${new Date().toLocaleString()}</p>
+        <p style="font-size: 12px; margin-top: 10px;">
+          📅 Application received: ${new Date().toLocaleString()}<br>
+          For inquiries, contact the admin at ${ADMIN_EMAIL}
+        </p>
       </div>
     </div>
   `;
 }
 
-// small helpers
+// Helpers
 function escapeHtml(str = '') {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -255,19 +264,12 @@ function formatMultiline(text = '') {
   return esc.split('\n').map(l => `<div style="margin-bottom:6px;">${l}</div>`).join('');
 }
 
+// Apply route
 app.post('/apply', async (req, res) => {
   try {
-    console.log('📧 Processing new application...');
-    
     const payload = req.body || {};
-    const {
-      teamName, projectIdea, problemStatement, proposedSolution,
-      technologyUsed, sdgAlignment, projectCategory, memberEmails = []
-    } = payload;
-
-    console.log(`👥 Team: ${teamName}`);
-    console.log(`📧 Member emails: ${memberEmails.join(', ')}`);
-    console.log(`🎯 SDGs selected: ${Array.isArray(sdgAlignment) ? sdgAlignment.join(', ') : 'None'}`);
+    const { teamName, projectIdea, problemStatement, proposedSolution,
+      technologyUsed, sdgAlignment, projectCategory, memberEmails = [] } = payload;
 
     if (!teamName || !projectIdea || !problemStatement || !proposedSolution || 
         !technologyUsed || !projectCategory || !memberEmails) {
@@ -291,13 +293,7 @@ app.post('/apply', async (req, res) => {
       });
     }
 
-    const adminHtml = buildAdminHtml({ 
-      teamName, projectIdea, problemStatement, proposedSolution, 
-      technologyUsed, sdgAlignment, projectCategory, memberEmails 
-    });
-
-    const formattedSDGsText = formatSDGNames(sdgAlignment);
-
+    const adminHtml = buildAdminHtml(payload);
     const adminMailOptions = {
       from: `"FOCLIS Hackathon" <${process.env.EMAIL_USER}>`,
       to: ADMIN_EMAIL,
@@ -307,7 +303,7 @@ New FOCLIS Hackathon Application
 
 Team: ${teamName || '—'}
 Project Category: ${projectCategory || '—'}
-SDGs Selected (${sdgAlignment.length}): ${formattedSDGsText}
+SDGs Selected (${sdgAlignment.length}): ${formatSDGNames(sdgAlignment)}
 Technology Stack: ${technologyUsed || '—'}
 
 Project Idea: ${projectIdea || '—'}
@@ -317,30 +313,28 @@ Proposed Solution: ${proposedSolution || '—'}
 Team Members (${memberEmails.length}): ${(memberEmails || []).join(', ') || '—'}
 
 Received: ${new Date().toLocaleString()}
+
+For inquiries, contact the admin at ${ADMIN_EMAIL}
       `,
       html: adminHtml
     };
 
-    console.log('📤 Sending admin notification...');
     await transporter.sendMail(adminMailOptions);
-    console.log('✅ Admin notification sent to cosaku10@gmail.com');
 
-    if (Array.isArray(memberEmails) && memberEmails.length > 0) {
-      console.log(`📤 Sending confirmation emails to ${memberEmails.length} members...`);
-      
-      const teamMemberHtml = buildTeamMemberHtml({
-        teamName, projectIdea, problemStatement, proposedSolution,
-        technologyUsed, sdgAlignment, projectCategory, memberEmails
-      });
-
-      const thankYouText = `Thank you for applying to be part of the FOCLIS Hackathon. We have received your application. Please go ahead and start building your MVP.
+    if (memberEmails.length > 0) {
+      const teamMemberHtml = buildTeamMemberHtml(payload);
+      const thankYouText = `
+Thank you for applying to be part of the FOCLIS Hackathon. We have received your application. Please go ahead and start building your MVP.
 
 Team: ${teamName}
 SDGs Selected: ${formatSDGNames(sdgAlignment)}
 Project Category: ${projectCategory}
 
+For inquiries, contact the admin at ${ADMIN_EMAIL}
+
 — FOCLIS Hackathon Team
-Faculty of Computing, Library & Information Science`;
+Faculty of Computing, Library & Information Science
+      `;
 
       const sendPromises = memberEmails.map(email => transporter.sendMail({
         from: `"FOCLIS Hackathon 2025" <${process.env.EMAIL_USER}>`,
@@ -351,15 +345,12 @@ Faculty of Computing, Library & Information Science`;
       }));
 
       await Promise.all(sendPromises);
-      console.log('✅ Confirmation emails sent to all members');
-    } else {
-      console.log('⚠️ No member emails provided');
     }
 
     return res.json({ 
       success: true, 
       message: `Application received! Admin notified and confirmation emails sent to ${memberEmails.length} team members.`,
-      teamName: teamName,
+      teamName,
       memberCount: memberEmails.length,
       selectedSDGs: sdgAlignment,
       sdgCount: sdgAlignment.length
@@ -374,7 +365,6 @@ Faculty of Computing, Library & Information Science`;
   }
 });
 
-// Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 

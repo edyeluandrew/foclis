@@ -8,7 +8,243 @@
 </head>
 <body>
     
-    <canvas id="bg-canvas"></canvas>
+    <div id="bg-canvas">
+        <svg id="tech-animation" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <!-- Circuit Board Pattern -->
+            <defs>
+                <pattern id="circuitPattern" patternUnits="userSpaceOnUse" width="100" height="100">
+                    <rect width="100" height="100" fill="rgba(102, 126, 234, 0.1)"/>
+                    <path d="M10 10L30 10L30 30L50 30L50 50L70 50L70 70L90 70" 
+                          stroke="rgba(102, 126, 234, 0.3)" stroke-width="2" fill="none"/>
+                    <circle cx="30" cy="30" r="3" fill="rgba(102, 126, 234, 0.5)"/>
+                    <circle cx="70" cy="70" r="3" fill="rgba(118, 75, 162, 0.5)"/>
+                </pattern>
+                
+                <linearGradient id="codeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(102, 126, 234, 0.8)"/>
+                    <stop offset="100%" stop-color="rgba(118, 75, 162, 0.8)"/>
+                </linearGradient>
+                
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <!-- Background Circuit -->
+            <rect width="100%" height="100%" fill="url(#circuitPattern)" opacity="0.3"/>
+            
+            <!-- Floating Code Blocks -->
+            <g class="code-blocks">
+                <rect x="100" y="150" width="120" height="80" rx="8" fill="url(#codeGradient)" opacity="0.7">
+                    <animate attributeName="y" values="150;120;150" dur="4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                </rect>
+                <text x="160" y="185" text-anchor="middle" fill="white" font-family="monospace" font-size="12">
+                    &lt;/&gt; CODE
+                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                </text>
+                
+                <rect x="950" y="200" width="120" height="80" rx="8" fill="url(#codeGradient)" opacity="0.6">
+                    <animate attributeName="y" values="200;170;200" dur="5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3.5s" repeatCount="indefinite"/>
+                </rect>
+                <text x="1010" y="235" text-anchor="middle" fill="white" font-family="monospace" font-size="12">
+                    { API }
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+                </text>
+                
+                <rect x="200" y="500" width="100" height="60" rx="8" fill="url(#codeGradient)" opacity="0.8">
+                    <animate attributeName="y" values="500;480;500" dur="3.5s" repeatCount="indefinite"/>
+                </rect>
+                <text x="250" y="535" text-anchor="middle" fill="white" font-family="monospace" font-size="10">
+                    DATA
+                    <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                </text>
+                
+                <rect x="900" y="450" width="110" height="70" rx="8" fill="url(#codeGradient)" opacity="0.7">
+                    <animate attributeName="y" values="450;430;450" dur="4.2s" repeatCount="indefinite"/>
+                </rect>
+                <text x="955" y="485" text-anchor="middle" fill="white" font-family="monospace" font-size="11">
+                    ML/AI
+                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                </text>
+            </g>
+            
+            <!-- Binary Rain -->
+            <g class="binary-rain">
+                <text x="50" y="0" fill="rgba(102, 126, 234, 0.5)" font-family="monospace" font-size="14">
+                    1010110100101
+                    <animate attributeName="y" values="0;800" dur="8s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="8s" repeatCount="indefinite"/>
+                </text>
+                <text x="150" y="0" fill="rgba(118, 75, 162, 0.5)" font-family="monospace" font-size="12">
+                    0101001011010
+                    <animate attributeName="y" values="0;800" dur="10s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="10s" repeatCount="indefinite"/>
+                </text>
+                <text x="300" y="0" fill="rgba(102, 126, 234, 0.4)" font-family="monospace" font-size="16">
+                    1100101010110
+                    <animate attributeName="y" values="0;800" dur="7s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="7s" repeatCount="indefinite"/>
+                </text>
+                <text x="500" y="0" fill="rgba(118, 75, 162, 0.6)" font-family="monospace" font-size="13">
+                    0011010101001
+                    <animate attributeName="y" values="0;800" dur="9s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="9s" repeatCount="indefinite"/>
+                </text>
+                <text x="700" y="0" fill="rgba(102, 126, 234, 0.5)" font-family="monospace" font-size="15">
+                    1010001101010
+                    <animate attributeName="y" values="0;800" dur="6s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="6s" repeatCount="indefinite"/>
+                </text>
+                <text x="900" y="0" fill="rgba(118, 75, 162, 0.4)" font-family="monospace" font-size="14">
+                    0101110010101
+                    <animate attributeName="y" values="0;800" dur="11s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="11s" repeatCount="indefinite"/>
+                </text>
+                <text x="1100" y="0" fill="rgba(102, 126, 234, 0.6)" font-family="monospace" font-size="12">
+                    1001010110101
+                    <animate attributeName="y" values="0;800" dur="8.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;0" dur="8.5s" repeatCount="indefinite"/>
+                </text>
+            </g>
+            
+            <!-- Network Nodes -->
+            <g class="network-nodes">
+                <!-- Central Hub -->
+                <circle cx="600" cy="300" r="8" fill="rgba(102, 126, 234, 0.9)" filter="url(#glow)">
+                    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                
+                <!-- Connected Nodes -->
+                <circle cx="400" cy="250" r="6" fill="rgba(118, 75, 162, 0.8)">
+                    <animate attributeName="r" values="6;9;6" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="800" cy="350" r="6" fill="rgba(118, 75, 162, 0.8)">
+                    <animate attributeName="r" values="6;9;6" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="500" cy="400" r="5" fill="rgba(102, 126, 234, 0.7)">
+                    <animate attributeName="r" values="5;8;5" dur="3.2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="700" cy="200" r="5" fill="rgba(102, 126, 234, 0.7)">
+                    <animate attributeName="r" values="5;8;5" dur="2.8s" repeatCount="indefinite"/>
+                </circle>
+                
+                <!-- Connection Lines -->
+                <line x1="600" y1="300" x2="400" y2="250" stroke="rgba(102, 126, 234, 0.6)" stroke-width="2">
+                    <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="600" y1="300" x2="800" y2="350" stroke="rgba(118, 75, 162, 0.6)" stroke-width="2">
+                    <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="600" y1="300" x2="500" y2="400" stroke="rgba(102, 126, 234, 0.5)" stroke-width="2">
+                    <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="600" y1="300" x2="700" y2="200" stroke="rgba(118, 75, 162, 0.5)" stroke-width="2">
+                    <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="1.8s" repeatCount="indefinite"/>
+                </line>
+            </g>
+            
+            <!-- Gear Animations -->
+            <g class="gears">
+                <g transform="translate(150, 600)">
+                    <circle cx="0" cy="0" r="25" fill="none" stroke="rgba(102, 126, 234, 0.6)" stroke-width="3"/>
+                    <g class="gear-teeth">
+                        <rect x="-2" y="-28" width="4" height="6" fill="rgba(102, 126, 234, 0.6)"/>
+                        <rect x="-2" y="22" width="4" height="6" fill="rgba(102, 126, 234, 0.6)"/>
+                        <rect x="-28" y="-2" width="6" height="4" fill="rgba(102, 126, 234, 0.6)"/>
+                        <rect x="22" y="-2" width="6" height="4" fill="rgba(102, 126, 234, 0.6)"/>
+                        <rect x="-20" y="-20" width="4" height="4" fill="rgba(102, 126, 234, 0.6)" transform="rotate(45)"/>
+                        <rect x="16" y="-20" width="4" height="4" fill="rgba(102, 126, 234, 0.6)" transform="rotate(-45)"/>
+                        <rect x="-20" y="16" width="4" height="4" fill="rgba(102, 126, 234, 0.6)" transform="rotate(-45)"/>
+                        <rect x="16" y="16" width="4" height="4" fill="rgba(102, 126, 234, 0.6)" transform="rotate(45)"/>
+                    </g>
+                    <animateTransform attributeName="transform" type="rotate" values="0 150 600;360 150 600" dur="10s" repeatCount="indefinite"/>
+                </g>
+                
+                <g transform="translate(1050, 550)">
+                    <circle cx="0" cy="0" r="20" fill="none" stroke="rgba(118, 75, 162, 0.6)" stroke-width="2"/>
+                    <g class="gear-teeth-small">
+                        <rect x="-1.5" y="-22" width="3" height="4" fill="rgba(118, 75, 162, 0.6)"/>
+                        <rect x="-1.5" y="18" width="3" height="4" fill="rgba(118, 75, 162, 0.6)"/>
+                        <rect x="-22" y="-1.5" width="4" height="3" fill="rgba(118, 75, 162, 0.6)"/>
+                        <rect x="18" y="-1.5" width="4" height="3" fill="rgba(118, 75, 162, 0.6)"/>
+                        <rect x="-16" y="-16" width="3" height="3" fill="rgba(118, 75, 162, 0.6)" transform="rotate(45)"/>
+                        <rect x="13" y="-16" width="3" height="3" fill="rgba(118, 75, 162, 0.6)" transform="rotate(-45)"/>
+                        <rect x="-16" y="13" width="3" height="3" fill="rgba(118, 75, 162, 0.6)" transform="rotate(-45)"/>
+                        <rect x="13" y="13" width="3" height="3" fill="rgba(118, 75, 162, 0.6)" transform="rotate(45)"/>
+                    </g>
+                    <animateTransform attributeName="transform" type="rotate" values="360 1050 550;0 1050 550" dur="8s" repeatCount="indefinite"/>
+                </g>
+            </g>
+            
+            <!-- Data Streams -->
+            <g class="data-streams">
+                <path d="M50 100 Q300 50 600 100 T1150 100" stroke="rgba(102, 126, 234, 0.4)" stroke-width="2" fill="none">
+                    <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite"/>
+                </path>
+                <path d="M50 700 Q300 750 600 700 T1150 700" stroke="rgba(118, 75, 162, 0.4)" stroke-width="2" fill="none">
+                    <animate attributeName="stroke-dasharray" values="1000,0;0,1000" dur="4s" repeatCount="indefinite"/>
+                </path>
+                
+                <!-- Moving Data Packets -->
+                <circle r="4" fill="rgba(102, 126, 234, 0.8)">
+                    <animateMotion dur="3s" repeatCount="indefinite">
+                        <mpath href="#dataPath1"/>
+                    </animateMotion>
+                </circle>
+                <circle r="3" fill="rgba(118, 75, 162, 0.8)">
+                    <animateMotion dur="4s" repeatCount="indefinite">
+                        <mpath href="#dataPath2"/>
+                    </animateMotion>
+                </circle>
+                
+                <path id="dataPath1" d="M50 100 Q300 50 600 100 T1150 100" opacity="0"/>
+                <path id="dataPath2" d="M50 700 Q300 750 600 700 T1150 700" opacity="0"/>
+            </g>
+            
+            <!-- Tech Icons -->
+            <g class="tech-icons" opacity="0.7">
+                <!-- Laptop Icon -->
+                <g transform="translate(300, 120)">
+                    <rect x="0" y="10" width="40" height="25" rx="2" fill="none" stroke="rgba(102, 126, 234, 0.8)" stroke-width="2"/>
+                    <rect x="-2" y="33" width="44" height="3" rx="1" fill="rgba(102, 126, 234, 0.8)"/>
+                    <rect x="5" y="15" width="30" height="18" fill="rgba(102, 126, 234, 0.3)"/>
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                </g>
+                
+                <!-- Database Icon -->
+                <g transform="translate(850, 180)">
+                    <ellipse cx="15" cy="5" rx="15" ry="5" fill="rgba(118, 75, 162, 0.8)"/>
+                    <rect x="0" y="5" width="30" height="15" fill="rgba(118, 75, 162, 0.6)"/>
+                    <ellipse cx="15" cy="20" rx="15" ry="5" fill="rgba(118, 75, 162, 0.8)"/>
+                    <ellipse cx="15" cy="12" rx="15" ry="5" fill="rgba(118, 75, 162, 0.4)"/>
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+                </g>
+                
+                <!-- Cloud Icon -->
+                <g transform="translate(400, 600)">
+                    <ellipse cx="10" cy="15" rx="8" ry="6" fill="rgba(102, 126, 234, 0.7)"/>
+                    <ellipse cx="20" cy="12" rx="10" ry="8" fill="rgba(102, 126, 234, 0.7)"/>
+                    <ellipse cx="30" cy="15" rx="8" ry="6" fill="rgba(102, 126, 234, 0.7)"/>
+                    <rect x="10" y="15" width="20" height="6" fill="rgba(102, 126, 234, 0.7)"/>
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="5s" repeatCount="indefinite"/>
+                </g>
+                
+                <!-- Mobile Icon -->
+                <g transform="translate(750, 520)">
+                    <rect x="0" y="0" width="20" height="35" rx="3" fill="none" stroke="rgba(118, 75, 162, 0.8)" stroke-width="2"/>
+                    <rect x="2" y="3" width="16" height="26" fill="rgba(118, 75, 162, 0.3)"/>
+                    <circle cx="10" cy="32" r="2" fill="rgba(118, 75, 162, 0.8)"/>
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.8s" repeatCount="indefinite"/>
+                </g>
+            </g>
+        </svg>
+    </div>
     
     <header class="header">
         <div class="container">
@@ -23,6 +259,24 @@
                 <h2>Join the Innovation Challenge</h2>
                 <p>Bring together brilliant minds from Computer Science, Information Technology, and Library Science to solve real-world problems</p>
                 <a href="#application-form" class="cta-button">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="theme-section">
+        <div class="container">
+            <div class="theme-content">
+                <h2 class="theme-title">Hackathon Theme</h2>
+                <div class="theme-main">
+                    <h3>Digital Frontiers: Driving Change Through Technology and Information</h3>
+                </div>
+                <div class="subtheme">
+                    <h4>Subtheme:</h4>
+                    <p>Exploring Emerging Technologies to Shape Smarter, More Inclusive Communities in Alignment with the UN Sustainable Development Goals</p>
+                </div>
+                <div class="theme-description">
+                    <p>Challenge yourself to harness cutting-edge technologies and innovative information systems to create solutions that not only advance our digital capabilities but also contribute to building more equitable, sustainable, and connected communities worldwide.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -60,7 +314,7 @@
                 </div>
 
                 <div class="form-group">
-                    <h3>Team Members (Up to 5)</h3>
+                    <h3>Team Members (Up to 5 and MUST include a year one )</h3>
                     <div id="team-members">
                         <div class="member-row">
                             <div class="member-field">
@@ -227,319 +481,8 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
     <script>
-        let scene, camera, renderer;
-        let mountains = [];
-        let clouds = [];
-        let scrollSpeed = 0;
-        let targetScrollSpeed = 0;
-        let isScrolling = false;
-        let scrollTimeout;
-
-        function initThreeJS() {
-            const canvas = document.getElementById('bg-canvas');
-            if (!canvas) {
-                console.error('❌ Canvas element #bg-canvas not found!');
-                return;
-            }
-            
-            scene = new THREE.Scene();
-            scene.fog = new THREE.Fog(0x87CEEB, 80, 400);
-            
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setClearColor(0x87CEEB, 1);
-
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-            scene.add(ambientLight);
-
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
-            directionalLight.position.set(100, 100, 50);
-            directionalLight.castShadow = true;
-            scene.add(directionalLight);
-
-            const blueLight = new THREE.DirectionalLight(0x87CEEB, 0.2);
-            blueLight.position.set(-50, 50, -50);
-            scene.add(blueLight);
-
-            createMountains();
-            createClouds();
-
-            camera.position.set(0, 25, 60);
-            camera.lookAt(0, 15, 0);
-
-            animate();
-            console.log('✅ Three.js scene initialized successfully');
-        }
-
-        function createMountains() {
-            const mountainRanges = [
-                { z: -180, scale: 3.0, color: 0x4169E1, opacity: 0.4 }, 
-                { z: -120, scale: 2.2, color: 0x6495ED, opacity: 0.55 }, 
-                { z: -70, scale: 1.8, color: 0x778899, opacity: 0.7 },  
-                { z: -35, scale: 1.2, color: 0x696969, opacity: 0.85 }  
-            ];
-
-            mountainRanges.forEach((range, rangeIndex) => {
-                for (let i = 0; i < 12; i++) { 
-                    const height = (12 + Math.random() * 20) * range.scale;
-                    const baseRadius = 12 + Math.random() * 15;
-                    
-                    const geometry = new THREE.SphereGeometry(baseRadius, 16, 12);
-                    
-                    const positions = geometry.attributes.position.array;
-                    for (let j = 0; j < positions.length; j += 3) {
-                        const y = positions[j + 1];
-                        if (y < 0) {
-                            positions[j + 1] = Math.max(y * 0.1, -baseRadius * 0.1); 
-                        } else {
-                            positions[j + 1] = y * (height / baseRadius); 
-                        }
-                    }
-                    geometry.attributes.position.needsUpdate = true;
-                    geometry.computeVertexNormals();
-                    
-                    const material = new THREE.MeshLambertMaterial({
-                        color: range.color,
-                        transparent: true,
-                        opacity: range.opacity
-                    });
-                    
-                    const mountain = new THREE.Mesh(geometry, material);
-                    mountain.position.set(
-                        (i - 6) * 20 + (Math.random() - 0.5) * 25,
-                        height * 0.3 - 8,
-                        range.z + (Math.random() - 0.5) * 30
-                    );
-                    
-                    if (height > 20 && rangeIndex >= 1) {
-                        const snowCapGeometry = new THREE.SphereGeometry(baseRadius * 0.6, 12, 8);
-                        const snowCapMaterial = new THREE.MeshLambertMaterial({
-                            color: 0xFFFFFF,
-                            transparent: true,
-                            opacity: 0.8
-                        });
-                        const snowCap = new THREE.Mesh(snowCapGeometry, snowCapMaterial);
-                        snowCap.position.set(0, height * 0.4, 0);
-                        snowCap.scale.y = 0.5; 
-                        mountain.add(snowCap);
-                    }
-                    
-                    mountains.push(mountain);
-                    scene.add(mountain);
-                }
-            });
-        }
-
-        function createClouds() {
-            const cloudLayers = [
-                { count: 20, z: 40, y: 45, size: 4, opacity: 0.15, speed: 1.2, spread: 300 },
-                { count: 25, z: 10, y: 40, size: 6, opacity: 0.2, speed: 0.8, spread: 280 },   
-                { count: 18, z: -20, y: 50, size: 8, opacity: 0.25, speed: 0.6, spread: 250 },  
-                { count: 15, z: -60, y: 55, size: 10, opacity: 0.3, speed: 0.4, spread: 220 },  
-                { count: 12, z: -100, y: 65, size: 12, opacity: 0.2, speed: 0.3, spread: 200 }, 
-                { count: 8, z: -150, y: 75, size: 15, opacity: 0.15, speed: 0.2, spread: 180 }  
-            ];
-
-            cloudLayers.forEach((layer, layerIndex) => {
-                for (let i = 0; i < layer.count; i++) {
-                    const cloudGroup = new THREE.Group();
-                    
-                    const cloudParts = 3 + Math.floor(Math.random() * 3); 
-                    for (let j = 0; j < cloudParts; j++) {
-                        const partSize = layer.size * (0.6 + Math.random() * 0.8);
-                        const cloudGeometry = new THREE.SphereGeometry(partSize, 12, 8); 
-                        
-                        const cloudMaterial = new THREE.MeshLambertMaterial({
-                            color: 0xFFFFFF,
-                            transparent: true,
-                            opacity: layer.opacity * (0.5 + Math.random() * 0.5), 
-                            fog: true
-                        });
-                        
-                        const cloudPart = new THREE.Mesh(cloudGeometry, cloudMaterial);
-                        
-                        cloudPart.position.set(
-                            (Math.random() - 0.5) * layer.size * 3,
-                            (Math.random() - 0.5) * layer.size * 1.5,
-                            (Math.random() - 0.5) * layer.size * 2
-                        );
-                        
-                        cloudGroup.add(cloudPart);
-                    }
-                    
-                    cloudGroup.position.set(
-                        (Math.random() - 0.5) * layer.spread, 
-                        layer.y + (Math.random() - 0.5) * 25,
-                        layer.z + (Math.random() - 0.5) * 40
-                    );
-                    
-                    const scale = 0.7 + Math.random() * 0.8;
-                    cloudGroup.scale.set(scale, scale * 0.6, scale);
-                    
-                    cloudGroup.userData = {
-                        baseX: cloudGroup.position.x,
-                        baseY: cloudGroup.position.y,
-                        baseZ: cloudGroup.position.z,
-                        speedMultiplier: layer.speed,
-                        driftSpeed: 0.005 + Math.random() * 0.015,
-                        floatAmplitude: 1 + Math.random() * 2,
-                        floatSpeed: 0.0005 + Math.random() * 0.001
-                    };
-                    
-                    clouds.push(cloudGroup);
-                    scene.add(cloudGroup);
-                }
-            });
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            scrollSpeed += (targetScrollSpeed - scrollSpeed) * 0.1;
-
-            const time = Date.now();
-
-            clouds.forEach((cloud, index) => {
-                const userData = cloud.userData;
-                
-                cloud.position.x += userData.driftSpeed * userData.speedMultiplier;
-                
-                if (cloud.position.x > 200) {
-                    cloud.position.x = -200;
-                } else if (cloud.position.x < -200) {
-                    cloud.position.x = 200;
-                }
-                
-                cloud.position.z = userData.baseZ + scrollSpeed * userData.speedMultiplier * 0.3;
-                
-                cloud.position.y = userData.baseY + 
-                    Math.sin(time * userData.floatSpeed + index * 0.5) * userData.floatAmplitude;
-                
-                cloud.rotation.y += 0.0005 * userData.speedMultiplier;
-                cloud.rotation.z += Math.sin(time * 0.0003 + index) * 0.002;
-                
-                const breathe = 1 + Math.sin(time * 0.0008 + index * 0.3) * 0.05;
-                cloud.scale.x = cloud.scale.x * breathe;
-                cloud.scale.z = cloud.scale.z * breathe;
-            });
-
-            if (Math.abs(scrollSpeed) > 0.1) {
-                camera.position.x += scrollSpeed * 0.015;
-                camera.position.y += scrollSpeed * 0.008;
-                
-                camera.position.x = Math.max(-8, Math.min(8, camera.position.x));
-                camera.position.y = Math.max(20, Math.min(35, camera.position.y));
-            }
-
-            const cameraTime = Date.now() * 0.0002;
-            camera.position.x += Math.sin(cameraTime) * 0.3;
-            camera.position.y += Math.cos(cameraTime * 1.1) * 0.2;
-            camera.lookAt(0, 15, 0);
-
-            renderer.render(scene, camera);
-        }
-
-        function handleScrollAnimations() {
-            const scrollY = window.scrollY;
-            const formSection = document.getElementById('application-form');
-            const formOffset = formSection.offsetTop;
-            const formHeight = formSection.offsetHeight;
-            
-            const scrollProgress = Math.max(0, Math.min(1, (scrollY - formOffset + window.innerHeight) / (formHeight + window.innerHeight)));
-            
-            if (scrollY >= formOffset - window.innerHeight && scrollY <= formOffset + formHeight) {
-                targetScrollSpeed = (window.scrollY - window.lastScrollY || 0) * 0.05; 
-                isScrolling = true;
-                
-                clearTimeout(scrollTimeout);
-                
-                scrollTimeout = setTimeout(() => {
-                    targetScrollSpeed = 0;
-                    isScrolling = false;
-                }, 200);
-            } else {
-                targetScrollSpeed *= 0.98; 
-            }
-            
-            window.lastScrollY = window.scrollY;
-        }
-
-        function handleResizeAnimations() {
-            if (camera && renderer) {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-        }
-
-        function createSnowParticles() {
-            const snowGeometry = new THREE.BufferGeometry();
-            const snowCount = 150; 
-            const positions = new Float32Array(snowCount * 3);
-            
-            for (let i = 0; i < snowCount * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 250; 
-                positions[i + 1] = Math.random() * 120 + 10;    
-                positions[i + 2] = (Math.random() - 0.5) * 250; 
-            }
-            
-            snowGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            
-            const snowMaterial = new THREE.PointsMaterial({
-                color: 0xFFFFFF,
-                size: 1.5,
-                transparent: true,
-                opacity: 0.4, 
-                blending: THREE.AdditiveBlending
-            });
-            
-            const snow = new THREE.Points(snowGeometry, snowMaterial);
-            scene.add(snow);
-            
-            function animateSnow() {
-                const positions = snow.geometry.attributes.position.array;
-                
-                for (let i = 1; i < positions.length; i += 3) {
-                    positions[i] -= 0.05 + Math.random() * 0.03; 
-                    
-                    positions[i - 1] += (Math.random() - 0.5) * 0.02;
-                    
-                    if (positions[i] < 0) {
-                        positions[i] = 120;
-                        positions[i - 1] = (Math.random() - 0.5) * 250;
-                        positions[i + 1] = (Math.random() - 0.5) * 250;
-                    }
-                }
-                
-                snow.geometry.attributes.position.needsUpdate = true;
-                requestAnimationFrame(animateSnow);
-            }
-            
-            animateSnow();
-        }
-
-        window.ThreeAnimations = {
-            init: initThreeJS,
-            handleScroll: handleScrollAnimations,
-            handleResize: handleResizeAnimations,
-            initSnow: function() {
-                setTimeout(() => {
-                    if (scene) {
-                        createSnowParticles();
-                    }
-                }, 3000);
-            }
-        };
-    </script>
-    
-    
-    <script>
-        
+        // Form functionality
         let memberCount = 1;
         const maxMembers = 5;
 
@@ -628,7 +571,7 @@
             memberCount = memberRows.length;
         }
 
-       
+        // SDG counter functionality
         function updateSDGCount() {
             const checkboxes = document.querySelectorAll('input[name="sdgAlignment"]:checked');
             const countElement = document.getElementById('sdg-count');
@@ -637,14 +580,13 @@
             }
         }
 
-        
+        // Initialize SDG functionality
         document.addEventListener('DOMContentLoaded', function() {
             const sdgCheckboxes = document.querySelectorAll('input[name="sdgAlignment"]');
             sdgCheckboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', updateSDGCount);
             });
 
-            
             const selectAllBtn = document.getElementById('select-all-sdg');
             if (selectAllBtn) {
                 selectAllBtn.addEventListener('click', function() {
@@ -666,7 +608,7 @@
             }
         });
 
-       
+        // Form submission
         document.getElementById('hackathon-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -683,13 +625,11 @@
                 selectedSDGs.push(checkbox.value);
             });
 
-            
             if (selectedSDGs.length === 0) {
                 alert('Please select at least one Sustainable Development Goal.');
                 return;
             }
 
-            
             const memberEmails = [];
             for (let i = 1; i <= memberCount; i++) {
                 const email = data[`member${i}Email`];
@@ -720,7 +660,6 @@
                 alert(result.message);
                 
                 if (result.success) {
-
                     this.reset();
                     updateSDGCount();
                 }
@@ -729,62 +668,6 @@
                 alert('Something went wrong while submitting.');
             }
         });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎬 Initializing Three.js animations...');
-            
-            if (typeof THREE === 'undefined') {
-                console.error('❌ Three.js not loaded!');
-                return;
-            }
-
-            if (typeof window.ThreeAnimations === 'undefined') {
-                console.error('❌ ThreeAnimations not loaded!');
-                return;
-            }
-
-            try {
-               
-                window.ThreeAnimations.init();
-                console.log('✅ Three.js scene initialized');
-
-                window.addEventListener('scroll', window.ThreeAnimations.handleScroll);
-                console.log('✅ Scroll animations attached');
-
-                window.addEventListener('resize', window.ThreeAnimations.handleResize);
-                console.log('✅ Resize handler attached');
-
-                if (window.ThreeAnimations.initSnow) {
-                    window.ThreeAnimations.initSnow();
-                    console.log('✅ Snow particles scheduled');
-                }
-
-                console.log('🎉 All Three.js animations ready!');
-            } catch (error) {
-                console.error('❌ Error initializing Three.js:', error);
-            }
-        });
-
-        if (document.readyState === 'loading') {
-            
-        } else {
-            
-            setTimeout(() => {
-                if (typeof window.ThreeAnimations !== 'undefined') {
-                    try {
-                        window.ThreeAnimations.init();
-                        window.addEventListener('scroll', window.ThreeAnimations.handleScroll);
-                        window.addEventListener('resize', window.ThreeAnimations.handleResize);
-                        if (window.ThreeAnimations.initSnow) {
-                            window.ThreeAnimations.initSnow();
-                        }
-                        console.log('🎉 Three.js animations initialized (fallback)');
-                    } catch (error) {
-                        console.error('❌ Error in fallback initialization:', error);
-                    }
-                }
-            }, 100);
-        }
     </script>
 </body>
 </html>
