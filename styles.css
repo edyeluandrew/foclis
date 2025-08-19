@@ -20,7 +20,7 @@ body {
     padding: 0 20px;
 }
 
-/* Canvas Background */
+/* Canvas Background - Enhanced for better visibility */
 #bg-canvas {
     position: fixed;
     top: 0;
@@ -29,6 +29,7 @@ body {
     height: 100%;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.9; /* Increased opacity for better visibility */
 }
 
 /* Header */
@@ -58,13 +59,13 @@ body {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Hero Section - Updated for better SVG visibility */
+/* Hero Section - Adjusted for SVG visibility while keeping background */
 .hero {
     padding: 8rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: rgba(102, 126, 234, 0.4); /* Lighter background for SVG visibility */
+    background: rgba(102, 126, 234, 0.7); /* More transparent for SVG visibility */
 }
 
 .hero::before {
@@ -74,8 +75,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(118, 75, 162, 0.3) 0%, rgba(102, 126, 234, 0.15) 100%);
+    background: radial-gradient(circle at 50% 50%, rgba(118, 75, 162, 0.4) 0%, rgba(102, 126, 234, 0.2) 100%);
     pointer-events: none;
+    opacity: 0.8; /* Reduced opacity for SVG visibility */
 }
 
 .hero-content {
@@ -92,7 +94,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better contrast */
     animation: fadeInUp 1s ease-out;
 }
 
@@ -101,8 +103,12 @@ body {
     color: rgba(255, 255, 255, 0.95);
     margin-bottom: 3rem;
     line-height: 1.6;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Enhanced shadow for better contrast */
     animation: fadeInUp 1s ease-out 0.2s both;
+    background: rgba(0, 0, 0, 0.2); /* Subtle background for better text readability */
+    padding: 1.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
 .cta-button {
@@ -655,6 +661,11 @@ body {
         font-size: 3rem;
     }
     
+    .hero p {
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+    
     .theme-title,
     .departments h2,
     .form-section h2 {
@@ -715,7 +726,8 @@ body {
     }
     
     .hero p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        padding: 1rem;
     }
     
     .cta-button {
