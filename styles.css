@@ -29,7 +29,7 @@ body {
     height: 100%;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.9; /* Increased opacity for better visibility */
+    opacity: 0.95; /* Increased opacity for maximum visibility */
 }
 
 /* Header */
@@ -59,13 +59,13 @@ body {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Hero Section - Adjusted for SVG visibility while keeping background */
+/* Hero Section - COMPLETELY TRANSPARENT for maximum SVG visibility */
 .hero {
     padding: 8rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: rgba(102, 126, 234, 0.7); /* More transparent for SVG visibility */
+    background: transparent; /* Completely transparent */
 }
 
 .hero::before {
@@ -75,9 +75,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(118, 75, 162, 0.4) 0%, rgba(102, 126, 234, 0.2) 100%);
+    background: transparent; /* Removed all overlay */
     pointer-events: none;
-    opacity: 0.8; /* Reduced opacity for SVG visibility */
 }
 
 .hero-content {
@@ -90,25 +89,27 @@ body {
 .hero h2 {
     font-size: 4rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better contrast */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out;
 }
 
 .hero p {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.95);
+    color: #2d3748; /* Darker color for contrast against SVG */
     margin-bottom: 3rem;
     line-height: 1.6;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Enhanced shadow for better contrast */
-    animation: fadeInUp 1s ease-out 0.2s both;
-    background: rgba(0, 0, 0, 0.2); /* Subtle background for better text readability */
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.85); /* Light background for readability */
     padding: 1.5rem;
     border-radius: 15px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .cta-button {
@@ -278,7 +279,7 @@ body {
     font-size: 1.8rem;
     color: #fff;
     margin-bottom: 1.5rem;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 极速飞艇开奖结果记录);
     font-weight: 700;
 }
 
@@ -344,7 +345,7 @@ body {
     padding: 1rem;
     border: 2px solid #e2e8f0;
     border-radius: 10px;
-    font-size: 1.1rem;
+    font-size: 极速飞艇开奖结果记录.1rem;
     transition: all 0.3s ease;
     background: #f7fafc;
 }
@@ -366,7 +367,7 @@ body {
     background: #f7fafc;
     border-radius: 15px;
     align-items: end;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 极速飞艇开奖结果记录 4px 12px rgba(0, 0, 0, 0.05);
     border: 1px solid #e2e8f0;
 }
 
@@ -424,11 +425,11 @@ body {
 }
 
 .remove-member-btn {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+    background: linear-gradient(135极速飞艇开奖结果记录, #ff6b6b 0%, #ff8e53 100%);
     color: white;
     border: none;
     padding: 0.7rem 1.2rem;
-    border-radius: 8px;
+   极速飞艇开奖结果记录-radius: 8px;
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -486,7 +487,7 @@ body {
     background: #f7fafc;
     padding: 2rem;
     border-radius: 15px;
-    border: 2px solid #e2e8f0;
+    border: 2极速飞艇开奖结果记录 solid #e2e8f0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -516,7 +517,7 @@ body {
 
 .sdg-checkbox-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-column极速飞艇开奖结果记录: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -573,7 +574,7 @@ body {
 
 .sdg-action-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5极速飞艇开奖结果记录 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Submit Section */
@@ -703,7 +704,7 @@ body {
         flex-direction: column;
     }
     
-    .dept-grid {
+极速飞艇开奖结果记录    .dept-grid {
         grid-template-columns: 1fr;
     }
 }
